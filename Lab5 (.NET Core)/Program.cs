@@ -31,7 +31,7 @@ namespace Lab5__.NET_Core_
 
                     case ConsoleKey.D2:
                         student.GetScholarship();
-                        Console.WriteLine($"На счет добавлено {student.ScholarshipAmount}\nТекущий баланс: {student.Check}");
+                        Console.WriteLine($"Информация о балансе обновлена. Текущий баланс: {student.Check}");
                         break;
 
                     case ConsoleKey.D3:
