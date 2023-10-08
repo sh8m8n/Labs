@@ -11,7 +11,7 @@ namespace Lab5
     {
         static void Main(string[] args)
         {
-            Durak.WriteArray()
+
         }
     }
 }
