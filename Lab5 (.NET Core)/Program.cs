@@ -6,12 +6,7 @@ namespace Lab5__.NET_Core_
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Введите имя студента");
-            string name = Console.ReadLine();
-            Console.WriteLine("ВВедите специальность студента:");
-            string speciality = Console.ReadLine();
-
-            Student student = new Student() { Name = name, Speciality = speciality};
+            Student student = new Student() { ScholarshipAmount = 1000}; // :(
 
             while (true)
             {
@@ -19,7 +14,8 @@ namespace Lab5__.NET_Core_
                     "\n1 - Вывести информацию о студенте" +
                     "\n2 - Получить деньги" +
                     "\n3 - Потратить деньги" +
-                    "\n4 - Показать баланс");
+                    "\n4 - Показать баланс" +
+                    "\n5 - Ввести имя и специальность");
                 ConsoleKey key = Console.ReadKey().Key;
                 Console.WriteLine();
 
@@ -43,12 +39,23 @@ namespace Lab5__.NET_Core_
                     case ConsoleKey.D4:
                         Console.WriteLine($"Баланс = {student.Check}");
                         break;
+                    
+                    case ConsoleKey.D5:
+                        Console.WriteLine("Введите имя:");
+                        student.Name = Console.ReadLine();
+                        Console.WriteLine("Введите специальность");
+                        student.Speciality = Console.ReadLine();
+                        break;
 
                     default: 
                         Console.WriteLine("Такой команды нет");
                         break;
                 }
-                Console.WriteLine();
+                Console.WriteLine("\nНажмите любую клавишу для продолжения...");
+                Console.ReadKey();
+                Console.Clear();
+
+
             }
         }
     }

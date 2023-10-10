@@ -2,35 +2,42 @@
 {
     internal class Student
     {
-        public string Name { get; init; }
-        public string Speciality { get; init; }
+        private string name;
 
-        private int scholarshipAmount = 1000; // :(
-
-        public int ScholarshipAmount
+        public string Name
         {
-            get { return scholarshipAmount; }
+            get { return name; }
             set
             {
-                if (value >= 0)
+                if (name == null)
                 {
-                    scholarshipAmount = value;
-                } 
+                    name = value;
+                }
             }
         }
 
-        private int check;
+        private string speciality;
 
-        public int Check
+        public string Speciality
         {
-            get { return check; }
-            set { check = value; }
+            get { return speciality; }
+            set
+            {
+                if (speciality == null)
+                {
+                    speciality = value;
+                }
+            }
         }
+
+        public int ScholarshipAmount { get; init; }
+
+        public int Check { get; set; }
         public bool Warning
         {
             get
             {
-                if (check > 100)
+                if (Check > 100)
                     return false;
                 else return true;
             }
