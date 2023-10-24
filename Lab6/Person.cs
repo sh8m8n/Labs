@@ -1,5 +1,6 @@
 ﻿namespace Lab6
 {
+
     enum Speciality
     {
         Electrician,
@@ -51,7 +52,7 @@
             }
         }
 
-        public string GetInfo()
+        public override string ToString()
         {
             return $"Имя: {Name}, Возраст: {Age}, Специальность: {PersonSpeciality}, Средний балл: {Score}";
         }
