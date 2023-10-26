@@ -50,11 +50,21 @@ namespace Lab6
             Console.WriteLine("Принятые сотрудники:");
             foreach (Department department in factory.Departments)
             {
-                Console.WriteLine($"\t{department.Title}:");
-
-                foreach (Person person in department.Employees)
+                if (department is ElectricianDepartment electrician)
                 {
-                    Console.WriteLine($"\t\t{ person.GetInfo()}");
+                    Console.WriteLine(electrician.PrintEmployees());
+                }
+                else if (department is MechanicDepartment mechanic)
+                {
+                    Console.WriteLine(mechanic.PrintEmployees());
+                }
+                else if (department is InformDepartment inform)
+                {
+                    Console.WriteLine(inform.PrintEmployees());
+                }
+                else
+                {
+                    Console.WriteLine(department.PrintEmployees());
                 }
             }
 
@@ -63,6 +73,9 @@ namespace Lab6
             {
                 Console.WriteLine($"\t\t{person.GetInfo()}");
             }
+
+            Console.WriteLine("Нажмите любую клавишу чтобы выйти...");
+            Console.ReadKey();
         }
     }
 }

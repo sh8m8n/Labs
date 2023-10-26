@@ -26,5 +26,20 @@ namespace Lab6
                 }
             }
         }
+
+        /// <summary>
+        /// Возвращает строкой список сотрудников департамента (Имя, Средний балл)
+        /// </summary>
+        /// <returns></returns>
+        new public string PrintEmployees()
+        {
+            string result = "==Список сотрудников департамента " + Title + "==\n";
+            foreach (Person person in Employees)
+            {
+                result += "Имя: " + person.Name + " Средний балл: " + person.Score + "\n";
+            }
+            result += "-------------------\n";
+            return result;
+        }
     }
 }

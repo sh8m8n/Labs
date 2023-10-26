@@ -51,5 +51,20 @@ namespace Lab6
                 }
             }
         }
+
+        /// <summary>
+        /// Возвращает строкой список сотрудников департамента (Имя)
+        /// </summary>
+        /// <returns></returns>
+        public string PrintEmployees()
+        {
+            string result = "==Список сотрудников департамента " + Title + "==\n";
+            foreach (Person person in Employees)
+            {
+                result += person.Name + "\n";
+            }
+            result += "-------------------";
+            return result;
+        }
     }
 }

@@ -27,5 +27,20 @@ namespace Lab6
                 }
             }
         }
+
+        /// <summary>
+        /// Возвращает строкой список сотрудников департамента (Имя, Возраст)
+        /// </summary>
+        /// <returns></returns>
+        new public string PrintEmployees()
+        {
+            string result = "==Список сотрудников департамента " + Title + "==\n";
+            foreach (Person person in Employees)
+            {
+                result += "Имя: " + person.Name + " Возраст: " + person.Age + "\n";
+            }
+            result += "-------------------\n";
+            return result;
+        }
     }
 }

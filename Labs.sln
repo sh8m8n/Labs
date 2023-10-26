@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LabLib", "LabLib\LabLib.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lab5 (.NET Core)", "Lab5 (.NET Core)\Lab5 (.NET Core).csproj", "{6705240E-44D6-498C-9B7F-790F416BA148}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab6", "Lab6\Lab6.csproj", "{53B77A47-2205-445A-A052-F4C73F8B73CD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab6, 7", "Lab6\Lab6, 7.csproj", "{53B77A47-2205-445A-A052-F4C73F8B73CD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
