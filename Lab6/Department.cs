@@ -35,9 +35,9 @@ namespace Lab6
         /// <param name="Candidates"></param>
         public virtual void StaffSelection(List<Person> Candidates)
         {
-            Candidates = Candidates.OrderByDescending(x => x.Score).ToList();
+            var Candidates1 = Candidates.OrderByDescending(x => x.Score).ToList();
 
-            foreach (Person person in Candidates) 
+            foreach (Person person in Candidates1) 
             {
                 if (NumberOfVacancies == 0)
                 {

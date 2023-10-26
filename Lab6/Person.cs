@@ -1,5 +1,6 @@
 ﻿namespace Lab6
 {
+
     enum Speciality
     {
         Electrician,

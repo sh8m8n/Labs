@@ -9,6 +9,7 @@ namespace Lab6
     {
         static void Main(string[] args)
         {
+            Department dep = new ElectricianDepartment();
             //Генерация списка кандидатов
             Random random = new Random();
 
@@ -16,7 +17,7 @@ namespace Lab6
 
             for (int i = 0; i < 20; i++)
             {
-                string name = File.ReadLines("C:\\C#\\Labs\\Lab6\\names.txt").Skip(random.Next(0, 1299)).Take(1).First();
+                string name = File.ReadLines("C:\\C# Projects\\Labs\\Lab6\\names.txt").Skip(random.Next(0, 1299)).Take(1).First();
                 int age = random.Next(14, 50);
                 Speciality speciality = (Speciality)random.Next(0, 5);
                 double score = random.NextDouble() * 1.5d + 3.5;
