@@ -11,9 +11,9 @@ namespace Lab6
         /// <param name="Candidates"></param>
         public override void StaffSelection(List<Person> Candidates)
         {
-            Candidates = Candidates.OrderByDescending(x => x.Score).ToList();
+            var sortCandidates = Candidates.OrderByDescending(x => x.Score).ToList();
 
-            foreach (Person person in Candidates)
+            foreach (Person person in sortCandidates)
             {
                 if (NumberOfVacancies == 0)
                 {
@@ -24,6 +24,7 @@ namespace Lab6
                 {
                     Employees.Add(person);
                     NumberOfVacancies -= 1;
+                    Candidates.Remove(person);
                 }
             }
         }
@@ -37,7 +38,7 @@ namespace Lab6
             string result = "==Список сотрудников департамента " + Title + "==\n";
             foreach (Person person in Employees)
             {
-                result += "Имя: " + person.Name + " Возраст: " + person.Age + "\n";
+                result += "Имя: " + person.Name + " || Возраст: " + person.Age + "\n";
             }
             result += "-------------------\n";
             return result;

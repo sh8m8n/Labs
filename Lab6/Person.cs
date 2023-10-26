@@ -55,7 +55,7 @@
         /// Возвращает строку содержащую имя, возраст, специальность и средний балл
         /// </summary>
         /// <returns></returns>
-        public string GetInfo()
+        public override string ToString()
         {
             return $"Имя: {Name}, Возраст: {Age}, Специальность: {PersonSpeciality}, Средний балл: {Score}";
         }

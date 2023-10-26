@@ -40,10 +40,6 @@ namespace Lab6
             foreach (Department department in factory.Departments) 
             {
                 department.StaffSelection(factory.Candidates);
-                foreach (Person person in department.Employees)
-                {
-                    factory.Candidates.Remove(person);
-                }
             }
 
             //Вывод информации в консоль
@@ -71,7 +67,7 @@ namespace Lab6
             Console.WriteLine("Отклоненные кандидаты:");
             foreach (Person person in factory.Candidates)
             {
-                Console.WriteLine($"\t\t{person.GetInfo()}");
+                Console.WriteLine($"\t{person.ToString()}");
             }
 
             Console.WriteLine("Нажмите любую клавишу чтобы выйти...");
