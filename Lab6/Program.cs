@@ -42,7 +42,7 @@ namespace Lab6
             {
                 department.StaffSelection(factory.Candidates);
             }
-
+            
             //Вывод информации в консоль
             Console.WriteLine("Принятые сотрудники:");
             foreach (Department department in factory.Departments)
