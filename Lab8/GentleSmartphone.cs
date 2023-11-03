@@ -8,7 +8,23 @@ namespace Lab8
 {
     internal class GentleSmartphone
     {
-        public int Number { get; set; }
-        private TactileSensor sensor = new TactileSensor();
+        private static int countOfSmartphones = 0;
+        public int SerialNumber { get; }
+        private TactileSensor sensor;
+
+        public GentleSmartphone()
+        {
+            SerialNumber = ++countOfSmartphones;
+            sensor = new TactileSensor();
+        }
+        
+        /// <summary>
+        /// Возвращает чувствительность датчика нежности
+        /// </summary>
+        /// <returns></returns>
+        public double GetSensorSensetivity()
+        {
+            return sensor.Sensetivity;
+        }
     }
 }

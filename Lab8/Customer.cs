@@ -8,15 +8,21 @@ namespace Lab8
 {
     internal class Customer
     {
-        public GentleSmartphone Smartphone { get; set; }
-        public string Name { get; set; }
-        public int Tenderness { get; set; }
+        public string Name { get; private set; }
+        public double GentleRate { get; private set; }
 
-        public Customer(string name, int tenderness, GentleSmartphone smartphone)
+        public GentleSmartphone Smartphone { get; set; }
+        public Transformator TransformModule { get; set; }
+
+        public Customer(string name, double gentleRate)
         {
             Name = name;
-            Tenderness = tenderness;
-            Smartphone = smartphone;
+            GentleRate = gentleRate;
+        }
+
+        public override string ToString()
+        {
+            return $"{Name}, нежность = {GentleRate}";
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lab8
 {
-    enum sensetivityChange
+    enum TransformatorType
     {
         less,
         more

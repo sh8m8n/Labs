@@ -8,7 +8,7 @@ namespace Lab8
 {
     internal class Transformator
     {
-        public int Number { get; set; }
-        public sensetivityChange Change { get; set; }
+        public int SerialNumber { get; set; }
+        public TransformatorType Change { get; set; }
     }
 }
