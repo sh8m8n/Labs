@@ -1,14 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Lab8
+﻿namespace Lab8
 {
     internal class Transformator
     {
+        private static int countOfTransformators = 0;
         public int SerialNumber { get; set; }
-        public TransformatorType Change { get; set; }
+        public TransformatorType Type { get; set; }
+
+        public Transformator(TransformatorType type)
+        {
+            SerialNumber = ++countOfTransformators;
+            Type = type;
+        }
+
+        public override string ToString()
+        {
+            return $"Номер: {SerialNumber}, Тип: {Type}";
+        }
     }
 }

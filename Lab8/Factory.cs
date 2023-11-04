@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Lab8
 {
@@ -34,24 +30,46 @@ namespace Lab8
         {
             for (int i = 0; i < count; i++)
             {
-                Smartphones.Add(new GentleSmartphone());
+                var smartphone = new GentleSmartphone();
+                Smartphones.Add(smartphone);
             }
         }
-
+        
+        /// <summary>
+        /// Продает смартфоны со склада покупателям, оставшиеся смартфоны ликвидируются
+        /// </summary>
         public void SaleSmartphones()
         {
             foreach (var customer in Customers)
             {
-                foreach(var smartphone in Smartphones)
+                foreach (var smartphone in Smartphones)
                 {
                     if ((smartphone.GetSensorSensetivity() / customer.GentleRate <= 1.5) && 
                         (customer.GentleRate / smartphone.GetSensorSensetivity() <= 2))
                     {
                         customer.Smartphone = smartphone;
                         Smartphones.Remove(smartphone);
+                        break;
+                    }
+                    else if(((smartphone.GetSensorSensetivity() / 2) / customer.GentleRate <= 1.5) &&
+                        (customer.GentleRate / (smartphone.GetSensorSensetivity()/2) <= 2))
+                    {
+                        customer.Smartphone = smartphone;
+                        customer.TransformModule = new Transformator(TransformatorType.less);
+                        Smartphones.Remove(smartphone);
+                        break;
+                    }
+                    else if (((smartphone.GetSensorSensetivity() * 2) / customer.GentleRate <= 1.5) &&
+                        (customer.GentleRate / (smartphone.GetSensorSensetivity() * 2) <= 2))
+                    {
+                        customer.Smartphone = smartphone;
+                        customer.TransformModule = new Transformator(TransformatorType.more);
+                        Smartphones.Remove(smartphone);
+                        break;
                     }
                 }
             }
+            Smartphones.Clear(); //Ликвидация
         }
     }
 }

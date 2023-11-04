@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Lab8
+﻿namespace Lab8
 {
     internal class Customer
     {
@@ -22,7 +16,8 @@ namespace Lab8
 
         public override string ToString()
         {
-            return $"{Name}, нежность = {GentleRate}";
+            return $"{Name}, нежность: {GentleRate}, смартфон: {Smartphone?.ToString()}, " +
+                $"Трансформатор: {TransformModule?.ToString()}";
         }
     }
 }

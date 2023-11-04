@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Lab8
+﻿namespace Lab8
 {
     internal class GentleSmartphone
     {
@@ -25,6 +19,11 @@ namespace Lab8
         public double GetSensorSensetivity()
         {
             return sensor.Sensetivity;
+        }
+
+        public override string ToString()
+        {
+            return $"номер: {SerialNumber}, сенсор: {sensor.Sensetivity}";
         }
     }
 }

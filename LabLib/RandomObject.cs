@@ -1,13 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 
 namespace LabLib
 {
-    internal class RandomObject
+    public class RandomObject
     {
+        private static Random _random = new Random();
+
         /// <summary>
         /// Возвращает массив случайной длинны со случайными значениями в заданных пределах
         /// </summary>
@@ -18,14 +18,18 @@ namespace LabLib
         /// <returns></returns>
         public static int[] GetRandomIntArray(int minElementCount, int maxElementCount, int minElementValue, int maxElementValue)
         {
-            Random rnd = new Random();
-            int[] numbers = new int[rnd.Next(minElementCount, maxElementCount)];
+            int[] numbers = new int[_random.Next(minElementCount, maxElementCount)];
 
             for (int i = 0; i < numbers.Length; i++)
             {
-                numbers[i] = rnd.Next(minElementValue, maxElementValue);
+                numbers[i] = _random.Next(minElementValue, maxElementValue);
             }
             return numbers;
+        }
+
+        public static string GetRandomName()
+        {
+            return File.ReadLines("C:\\C#\\Labs\\LabLib\\names.txt").Skip(_random.Next(0, 1299)).Take(1).First();
         }
     }
 }
