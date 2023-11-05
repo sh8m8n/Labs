@@ -14,7 +14,7 @@ namespace Lab8
             //Генерация рандомных покупателей
             List<Customer> customers = new List<Customer>();
 
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < 10; i++)
             {
                 string name = File.ReadLines("C:\\C#\\Labs\\Lab6\\names.txt").Skip(random.Next(0, 1299)).Take(1).First();
                 double gentleRate = random.NextDouble() * 30;
@@ -25,7 +25,7 @@ namespace Lab8
             //Инициализация производства
             Factory factory = new Factory();
             factory.Customers = customers;
-            factory.ProduceSmartphones(20);
+            factory.ProduceSmartphones(10);
 
             //Вывод на консоль информации до продажи
             Console.WriteLine("Желающие приобрести смартфон:");
@@ -59,7 +59,6 @@ namespace Lab8
             }
 
             Console.ReadKey();
-
         }
     }
 }

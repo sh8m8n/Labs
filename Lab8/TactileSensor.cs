@@ -8,7 +8,7 @@ namespace Lab8
         public TactileSensor()
         {
             Random random = new Random();
-            Sensetivity = new Random().NextDouble() * 10 + 10; // (10,20)
+            Sensetivity = random.NextDouble() * 10 + 10; //(10, 20)
         }
     }
 }
