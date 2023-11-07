@@ -16,7 +16,7 @@ namespace Lab8
 
             for (int i = 0; i < 19; i++)
             {
-                string name = File.ReadLines("C:\\C#\\Labs\\Lab6\\names.txt").Skip(random.Next(0, 1299)).Take(1).First();
+                string name = File.ReadLines("C:\\C# Projects\\Labs\\Lab6\\names.txt").Skip(random.Next(0, 1299)).Take(1).First();
                 double gentleRate = random.NextDouble() * 30;
 
                 customers.Add(new Customer(name, gentleRate));
