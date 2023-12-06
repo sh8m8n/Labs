@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Lab9
+﻿namespace Lab9
 {
     internal class History : Discipline, IHaveFinalControl, IHavePractice
     {
@@ -31,7 +25,7 @@ namespace Lab9
             { return count >= PracticeCount; }
         }
 
-        public History(int passingScore, int practiceCount)
+        public History(string name, int passingScore, int practiceCount) : base(name)
         {
             PassingScore = passingScore;
             PracticeCount = practiceCount;

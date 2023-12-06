@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Lab9
+﻿namespace Lab9
 {
     internal class Programming : Discipline, IHavePractice
     {
@@ -20,7 +14,7 @@ namespace Lab9
             return count >= PracticeCount;
         }
 
-        public Programming(int practiceCount)
+        public Programming(string name, int practiceCount) : base(name)
         {
             PracticeCount = practiceCount;
         }

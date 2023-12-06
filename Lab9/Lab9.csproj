@@ -49,6 +49,7 @@
     <Compile Include="IHaveAngryTeacher.cs" />
     <Compile Include="IHaveFinalControl.cs" />
     <Compile Include="IHavePractice.cs" />
+    <Compile Include="Informatics.cs" />
     <Compile Include="Math.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Programming.cs" />

@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Lab9
+﻿namespace Lab9
 {
-    internal class Math : Discipline, IHaveFinalControl, IHaveAngryTeacher
+    internal class Math : Discipline, IHaveFinalControl
     {
-        public int PassingScore { get; set; };
+        public int PassingScore { get; set; }
         
         /// <summary>
         /// Проверка на достаточное количство тестовых баллов для автомата
@@ -20,7 +14,7 @@ namespace Lab9
             return score >= PassingScore;
         }
 
-        public Math(int passingScore)
+        public Math(string name, int passingScore) : base(name)
         {
             PassingScore = passingScore;
         }
