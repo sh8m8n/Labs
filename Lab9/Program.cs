@@ -57,6 +57,7 @@ namespace Lab9
                     Console.WriteLine(student.Check(discipline));
                 }
             }
+            Console.Read();
         }
     }
 }
