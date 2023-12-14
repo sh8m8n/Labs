@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Lab10
 {
@@ -20,8 +17,25 @@ namespace Lab10
             }
         }
 
+        /// <summary>
+        /// 匚口卩丅认卩口乃片闩 山片口人乙卄认片口乃
+        /// </summary>
+        /// <returns>人仨卄认乃仨凵, 丅卩丫亼牙厂闩</returns>
         public (Student, Student) FindMinMaxEmployee()
         {
+            Array.Sort(Students);
+
+            return (Students[0], Students.Last());
+        }
+
+        /// <summary>
+        /// "口丅口石卩闩丅乙 丫 冂仨卩乃口厂口, 口丅亼闩丅乙 乃丅口卩口爪丫"
+        /// </summary>
+        /// <param name="MinMaxEmployee">人仨卄认乃仨凵, 丅卩丫亼牙厂闩</param>
+        public void Reward( (Student, Student) MinMaxEmployee)
+        {
+            MinMaxEmployee.Item1.CountLunch--;
+            MinMaxEmployee.Item2.CountLunch++;
         }
     }
 }

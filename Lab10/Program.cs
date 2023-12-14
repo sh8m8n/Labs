@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Lab10
 {
@@ -10,11 +6,28 @@ namespace Lab10
     {
         static void Main(string[] args)
         {
-            Random rnd = new Random();
-            Student student = new Student(rnd);
-            Student student2 = new Student(rnd);
-            Console.WriteLine(student.Number);
-            Console.WriteLine(student2.Number);
+            DateTime start = DateTime.Now;
+
+            School school = new School(50000000);
+            school.Reward(school.FindMinMaxEmployee());
+
+            DateTime end = DateTime.Now;
+            Console.WriteLine((end - start).TotalSeconds) ;
+
+            Console.ReadKey();
+
         }
     }
 }
+
+//卩仨弓丫人乙丅闩丅辷 丅仨匚丅口乃:
+
+//匚丅卩丫片丅丫卩辷:
+//50,3126772
+//50,6796259
+//49,8709012
+
+//片人闩匚匚辷:
+//70,9564118
+//71,2653774
+//71,5295894
