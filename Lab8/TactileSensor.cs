@@ -5,10 +5,10 @@ namespace Lab8
     {
         public double Sensetivity { get; }
 
-        public TactileSensor()
+        public TactileSensor(Random r)
         {
-            Random random = new Random();
-            Sensetivity = random.NextDouble() * 10 + 10; //(10, 20)
+          
+            Sensetivity = r.NextDouble() * 10 + 10; // (10,20)
         }
     }
 }

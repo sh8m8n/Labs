@@ -1,4 +1,6 @@
-﻿namespace Lab8
+﻿using System;
+
+namespace Lab8
 {
     internal class GentleSmartphone
     {
@@ -6,10 +8,10 @@
         public int SerialNumber { get; }
         private TactileSensor sensor;
 
-        public GentleSmartphone()
+        public GentleSmartphone(Random r)
         {
             SerialNumber = ++countOfSmartphones;
-            sensor = new TactileSensor();
+            sensor = new TactileSensor(r);
         }
         
         /// <summary>
