@@ -89,5 +89,19 @@ namespace Lab10
                 throw new ArgumentException("Некорректное значение параметра");
             }
         }
+
+        public static bool operator ==(Student student1, Student student2)
+        {
+            if (student1.Number == student2.Number)
+            {
+                return true;
+            }
+            else
+                return false;
+        }
+        public static bool operator !=(Student student1, Student student2)
+        {
+            return !(student1 == student2);
+        }
     }
 }

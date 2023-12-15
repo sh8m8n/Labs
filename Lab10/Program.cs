@@ -8,8 +8,9 @@ namespace Lab10
         {
             DateTime start = DateTime.Now;
 
-            School school = new School(50000000);
-            school.Reward(school.FindMinMaxEmployee());
+            School school = new School(50);
+            (Student, Student) minmax = school.FindMinMaxEmployee();
+            school.Reward(ref minmax);
 
             DateTime end = DateTime.Now;
             Console.WriteLine((end - start).TotalSeconds) ;
