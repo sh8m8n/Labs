@@ -6,6 +6,8 @@ namespace Lab10
     {
         static void Main(string[] args)
         {
+            Student student = new Student();
+            string s = student.TranslateLine("50 миллионов китайских школьничков");
             DateTime start = DateTime.Now;
 
             School school = new School(50);
@@ -13,7 +15,7 @@ namespace Lab10
             school.Reward(ref minmax);
 
             DateTime end = DateTime.Now;
-            Console.WriteLine((end - start).TotalSeconds) ;
+            Console.WriteLine((end - start).TotalSeconds);
 
             Console.ReadKey();
 
