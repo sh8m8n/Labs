@@ -7,7 +7,8 @@ namespace Lab10
         static void Main(string[] args)
         {
             Student student = new Student();
-            string s = student.TranslateLine("50 миллионов китайских школьничков");
+            string s = student.TranslateLine("нас 50 миллионов и мы идем разбираться");
+            Console.WriteLine(s);
             DateTime start = DateTime.Now;
 
             School school = new School(50);
