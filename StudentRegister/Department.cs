@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -39,16 +40,35 @@ namespace StudentRegister
 
             if (index != -1)
             {
-                for (int i = index; i < Students.Length - 1; i++)
+                T[] temp = new T[Students.Length - 1];
+
+                for(int i = 0;i < Students.Length - 1;i++)
                 {
-                    Students[i] = Students[i + 1];
+                    if(i >= index)
+                        temp[i] = Students[i + 1];
+                    else
+                        temp[i] = Students[i];
                 }
+
+                Students = temp;
             }
         }
 
         public T[] GetStudentsList()
         {
             return (T[])Students.Clone();
+        }
+
+        public override string ToString()
+        {
+            string str = $"{Title}, {Supervisor}\n --- \n";
+
+            for (int i = 0; i < Students.Length; i++)
+            {
+                str += $"{Students[i]}\n";
+            }
+
+            return str;
         }
     }
 }

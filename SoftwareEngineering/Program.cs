@@ -21,12 +21,21 @@ namespace SoftwareEngineering
 
         static void Main()
         {
-            SEStudent s = new SEStudent("fuck", "holyC");
+            SEStudent s1 = new SEStudent("Malenia, Blade of Miquella", "Java");
+            SEStudent s2 = new SEStudent("Aldrich, Devourer of Gods", "HolyC");
+            SEStudent s3 = new SEStudent("Godrick The Grafted", "C++");
 
-            Department<SEStudent> department = new Department<SEStudent>("from software", "Naotoshi Zin");
+            Department<SEStudent> department = new Department<SEStudent>("From Software", "Naotoshi Zin");
 
-            department.EnrollStudent(s);
-            department.ExpelStudent(s);
+            department.EnrollStudent(s1);
+            department.EnrollStudent(s2);
+            department.EnrollStudent(s3);
+
+            Console.WriteLine(department.ToString());
+
+            department.ExpelStudent(s3);
+            Console.WriteLine("Отчисление 1 студента\n");
+            Console.WriteLine(department.ToString());
 
         }
 
