@@ -1,9 +1,5 @@
 ﻿using System;
-using System.CodeDom.Compiler;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace StudentRegister
 {
@@ -12,45 +8,71 @@ namespace StudentRegister
         public string Title { get; set; }
         public string Supervisor { get; set; }
 
-        private T[] Students { get; set; }
+        private T[] Students;
+        private int counter;
 
         public Department(string title, string supervisor)
         {
             Title = title;
             Supervisor = supervisor;
-            Students = new T[0];
+            Students = new T[8];
         }
 
+        /// <summary>
+        /// Добавляет студента в список
+        /// </summary>
+        /// <param name="student"></param>
         public void EnrollStudent(T student)
         {
-            T[] temp = new T[Students.Length + 1];
-
-            for (int i = 0; i < Students.Length; i++)
+            if (counter == Students.Length)
             {
-                temp[i] = Students[i];
+                T[] temp = new T[Students.Length * 2];
+
+                for (int i = 0; i < counter; i++)
+                {
+                    temp[i] = Students[i];
+                }
+
+                Students = temp;
             }
 
-            temp[Students.Length] = student;
-            Students = temp;
+            Students[counter] = student;
+            counter++;
         }
 
+        /// <summary>
+        /// Удаляет студента из списка
+        /// </summary>
+        /// <param name="student"></param>
         public void ExpelStudent(T student)
         {
             int index = Array.IndexOf(Students, student);
 
             if (index != -1)
             {
-                T[] temp = new T[Students.Length - 1];
-
-                for(int i = 0;i < Students.Length - 1;i++)
+                if(counter - 1 == Students.Length / 2)
                 {
-                    if(i >= index)
-                        temp[i] = Students[i + 1];
-                    else
-                        temp[i] = Students[i];
-                }
+                    T[] temp = new T[Students.Length / 2];
 
-                Students = temp;
+                    for (int i = 0; i < counter - 1; i++)
+                    {
+                        if (i < index)
+                            temp[i] = Students[i];
+                        else
+                            temp[i] = Students[i + 1];
+                    }
+                    Students = temp;
+                }
+                else
+                {
+                    for (int i = 0; i < counter - 1; i++)
+                    {
+                        if (i >= index)
+                            Students[i] = Students[i + 1];
+                    }
+                    Students[counter - 1] = default;
+                }
+                counter--;
             }
         }
 
@@ -61,14 +83,13 @@ namespace StudentRegister
 
         public override string ToString()
         {
-            string str = $"{Title}, {Supervisor}\n --- \n";
+            StringBuilder sb = new StringBuilder($"Название: {Title}, Ответственный: {Supervisor}\n --- \n");
 
-            for (int i = 0; i < Students.Length; i++)
+            for (int i = 0;i < counter;i++)
             {
-                str += $"{Students[i]}\n";
+                sb.Append($"{Students[i]}\n");
             }
-
-            return str;
+            return sb.ToString();
         }
     }
 }
