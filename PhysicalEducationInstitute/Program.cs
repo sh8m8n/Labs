@@ -25,7 +25,7 @@ namespace PhysicalEducationInstitute
             PEStudent s2 = new PEStudent("Billy Herrington", "Bodybuilding");
             PEStudent s3 = new PEStudent("Фома", "Стрельба из лука");
 
-            Department<PEStudent> department = new Department<PEStudent>("Спортивный институт", "...");
+            Department<PEStudent> department = new Department<PEStudent>("Спортивный институт", "Владимир Владимирович");
 
             //Зачисление студентов
             department.EnrollStudent(s1);
@@ -35,10 +35,12 @@ namespace PhysicalEducationInstitute
             Console.WriteLine(department.ToString());
 
             //Отчисление студентов
-            department.EnrollStudent(s2);
+            department.ExpelStudent(s2);
 
             Console.WriteLine("Отчисление 1 студента\n");
             Console.WriteLine(department.ToString());
+
+            Console.ReadKey();
         }
 
         public override string ToString()

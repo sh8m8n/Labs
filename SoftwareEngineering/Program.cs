@@ -29,13 +29,16 @@ namespace SoftwareEngineering
             department.EnrollStudent(s2);
             department.EnrollStudent(s3);
 
+            var s = department.GetStudentsList();
             Console.WriteLine(department.ToString());
 
             //Отчисление студентов
-            department.EnrollStudent(s3);
+            department.ExpelStudent(s3);
 
             Console.WriteLine("Отчисление 1 студента\n");
             Console.WriteLine(department.ToString());
+
+            Console.ReadKey();
         }
 
         public override string ToString()
