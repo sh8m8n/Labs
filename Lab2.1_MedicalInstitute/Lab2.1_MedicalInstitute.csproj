@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{339DB40D-21E0-46CA-8FBC-E50F4AA6FBA8}</ProjectGuid>
+    <ProjectGuid>{18625E8E-C1F3-464D-BBC8-C5427F4CC350}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>SoftwareEngineering</RootNamespace>
-    <AssemblyName>SoftwareEngineering</AssemblyName>
+    <RootNamespace>MedicalInstitute</RootNamespace>
+    <AssemblyName>MedicalInstitute</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -50,9 +50,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\StudentRegister\StudentRegister.csproj">
+    <ProjectReference Include="..\Lab2.1_StudentRegister\Lab2.1_StudentRegister.csproj">
       <Project>{1cdbaf36-01a6-4a5d-8c5f-1dcc413b6ad8}</Project>
-      <Name>StudentRegister</Name>
+      <Name>Lab2.1_StudentRegister</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
