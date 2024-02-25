@@ -36,29 +36,6 @@ namespace Lab2._1_old_
         }
 
         /// <summary>
-        /// Поиск недостатка характеристик еды из корзины еды
-        /// </summary>
-        /// <param name="accuracyPercentage">допустимый процент неточности для каждой характеристики еды(белки жиры углеводы)</param>
-        /// <returns>Данные о недостатке жиров и или белков и или углеводов</returns>
-        private EnergyValue FindFoodDisbalance(int accuracyPercentage)
-        {
-            EnergyValue sumEnergy = new EnergyValue();
-            foreach (IFood food in Foods)
-            {
-                sumEnergy = sumEnergy + food.EnergyValue;
-            }
-
-            //Если корзина сбалансирована в пределах допустимого процента
-            if (100d - (double)sumEnergy.Min() / (double)sumEnergy.Max() * 100d < accuracyPercentage)
-                return null;
-
-            //Иначе возвращается недостаток по необходимым питательным элементам
-            int max = sumEnergy.Max();
-            EnergyValue BalancedEnergy = new EnergyValue(max, max, max);
-            return BalancedEnergy - sumEnergy;
-        }
-
-        /// <summary>
         /// Добавляет в коллекцию продукты необходимые для сбалансированного набора
         /// </summary>
         /// <param name="foods">Ассортимент доступных продуктов</param>
@@ -83,6 +60,28 @@ namespace Lab2._1_old_
                 Foods.Add(bestResult);
             }
         }
+        /// <summary>
+        /// Поиск недостатка характеристик еды из корзины еды
+        /// </summary>
+        /// <param name="accuracyPercentage">допустимый процент неточности для каждой характеристики еды(белки жиры углеводы)</param>
+        /// <returns>Данные о недостатке жиров и или белков и или углеводов</returns>
+        private EnergyValue FindFoodDisbalance(int accuracyPercentage)
+        {
+            EnergyValue sumEnergy = new EnergyValue();
+            foreach (IFood food in Foods)
+            {
+                sumEnergy = sumEnergy + food.EnergyValue;
+            }
+
+            //Если корзина сбалансирована в пределах допустимого процента
+            if (100d - (double)sumEnergy.Min() / (double)sumEnergy.Max() * 100d < accuracyPercentage)
+                return null;
+
+            //Иначе возвращается недостаток по необходимым питательным элементам
+            int max = sumEnergy.Max();
+            EnergyValue BalancedEnergy = new EnergyValue(max, max, max);
+            return BalancedEnergy - sumEnergy;
+        }
 
         public override string ToString()
         {
@@ -92,7 +91,7 @@ namespace Lab2._1_old_
                 sumEnergy = sumEnergy + food.EnergyValue;
             }
 
-            StringBuilder sb = new StringBuilder($"{sumEnergy}\n");
+            StringBuilder sb = new StringBuilder($"Содержимое корзины:\nВсего: {sumEnergy}\n");
 
             List<Product> temp = new List<Product>(Products);
             temp.AddRange(Foods.Cast<Product>());
