@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 
 namespace Lab2._1_old_
 {
@@ -9,12 +10,12 @@ namespace Lab2._1_old_
         static void Main()
         {
             //Инициализация ассортимента товаров
-            List<Product> products = new List<Product>
+            List<Item> items = new List<Item>
             {
                 new Pen("Pilot", 100),
                 new Notebook("Honor magicbook 14", 50000)
             };
-            List<IFood> foods = new List<IFood>
+            List<Food> foods = new List<Food>
             {
                 new ChocolateBar("RitterSport", 199, 10, 35, 50),
                 new Crisps("Lays дай краба", 99, 7, 30, 53),
@@ -31,47 +32,73 @@ namespace Lab2._1_old_
                 new RawMeat("красная икра", 500, 25, 18, 4)
             };
 
-            products.AddRange(foods.Cast<Product>());
+            items.AddRange(foods.Cast<Item>());
 
             //Инициализация магазина
-            U_Market market = new U_Market(products);
+            U_Market market = new U_Market(items);
 
 
-            //Имитация интерфейса
-            Console.WriteLine(market.ShowProducts());
-
+            //Имитация интерфейса 
+            Console.WriteLine("Чтобы добавить предмет в корзину товар или применить фильтр введите его номер\n\n" +
+                    "Список Фильтров:\n" +
+                    "-1 Food:\n" +
+                    "   -2 Snacks\n" +
+                    "   -3 Healthy\n" +
+                    "   -4 SemiFinished\n" +
+                    "-5 Electronic:\n" +
+                    "   -6 Notebook\n" +
+                    "-7 Office:\n" +
+                    "   -8 Pen\n" +
+                    "-9 Сбалансировать корзину\n\n" +
+                    "Список доступных товаров:\n" +
+                    market.ShowItems());
             while (true)
             {
-                Console.WriteLine("Применить фильтр:\n" +
-                    "-1 - food\n" +
-                    "-2 - snacks\n" +
-                    "-3 - healthy\n" +
-                    "-4 - semiFinished\n" +
-                    "-5 - сбросить фильтры\n" +
-                    "---\n" +
-                    "Чтобы купить товар введите его номер\n" +
-                    "Чтобы сбалансировать продукты введите 0\n");
                 int result = int.Parse(Console.ReadLine());
 
-                Console.WriteLine("\n\n\n");
                 switch (result)
                 {
-                    case -1:
-                        Console.WriteLine(market.ShowFood()); break;
+                    case -9:
+                        market.BalanceFoods(foods);
+                        Console.WriteLine(market.ShowCart());
+                        break;
+                    case  -1:
+                        Console.WriteLine(market.ShowItems(Tag.Food));
+                        Console.WriteLine(market.ShowCart());
+                        break;
                     case -2:
-                        Console.WriteLine(market.ShowFood(FoodType.Snacks)); break;
+                        Console.WriteLine(market.ShowItems(Tag.Snacks));
+                        Console.WriteLine(market.ShowCart());
+                        break;
                     case -3:
-                        Console.WriteLine(market.ShowFood(FoodType.Healthy)); break;
+                        Console.WriteLine(market.ShowItems(Tag.Healthy));
+                        Console.WriteLine(market.ShowCart());
+                        break;
                     case -4:
-                        Console.WriteLine(market.ShowFood(FoodType.SemiFinished)); break;
+                        Console.WriteLine(market.ShowItems(Tag.SemiFinished));
+                        Console.WriteLine(market.ShowCart());
+                        break;
                     case -5:
-                        Console.WriteLine(market.ShowProducts()); break;
-                    case 0: 
-                        market.BalanceFoods(foods); break;
-                    default: 
-                        market.Buy(result); break;
+                        Console.WriteLine(market.ShowItems(Tag.Electronics));
+                        Console.WriteLine(market.ShowCart());
+                        break;
+                    case -6:
+                        Console.WriteLine(market.ShowItems(Tag.Notebook));
+                        Console.WriteLine(market.ShowCart());
+                        break;
+                    case -7:
+                        Console.WriteLine(market.ShowItems(Tag.Office));
+                        Console.WriteLine(market.ShowCart());
+                        break;
+                    case -8:
+                        Console.WriteLine(market.ShowItems(Tag.Pen));
+                        Console.WriteLine(market.ShowCart());
+                        break;
+                    default:
+                        market.Buy(result);
+                        Console.WriteLine(market.ShowCart());
+                        break;
                 }
-                Console.WriteLine(market.ShowCart());
             }
         }
     }

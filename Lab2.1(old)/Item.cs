@@ -1,14 +1,19 @@
-﻿namespace Lab2._1_old_
+﻿using System.Collections.Generic;
+
+namespace Lab2._1_old_
 {
-    public abstract class Product
+    public abstract class Item
     {
         public string Name { get; set; }
         public int Price { get; set; }
 
-        public Product(string name, int price)
+        public List<Tag> Tags { get; protected set; }
+
+        public Item(string name, int price)
         {
             Name = name;
             Price = price;
+            Tags = new List<Tag>();
         }
 
         public override string ToString()

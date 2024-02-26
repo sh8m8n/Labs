@@ -5,26 +5,26 @@ namespace Lab2._1_old_
 {
     internal class U_Market
     {
-        public List<Product> Products { get; set; }
+        public List<Item> Items { get; set; }
         private Cart cart;
         private const int accuracyPercentage = 10;
 
-        public U_Market(List<Product> products)
+        public U_Market(List<Item> products)
         {
-            Products = products;
+            Items = products;
             cart = new Cart();
         }
 
         public void Buy(int index)
         {
-            cart.AddProduct(Products[index]);
+            cart.AddItem(Items[index]);
         }
 
         /// <summary>
         /// Добавляет в корзину продукты необходимые для сбалансированного набора
         /// </summary>
         /// <param name="foods">Ассортимент доступных продуктов</param>
-        public void BalanceFoods(List<IFood> foods)
+        public void BalanceFoods(List<Food> foods)
         {
             cart.BalanceFood(foods, accuracyPercentage);
         }
@@ -33,13 +33,13 @@ namespace Lab2._1_old_
         /// 
         /// </summary>
         /// <returns>Список товаров магазина</returns>
-        public string ShowProducts()
+        public string ShowItems()
         {
             StringBuilder sb = new StringBuilder("Ассортимент товаров:\n");
 
-            for (int i = 0; i < Products.Count; i++)
+            for (int i = 0; i < Items.Count; i++)
             {
-                    sb.Append($"{i}: {Products[i]}\n");
+                    sb.Append($"{i}: {Items[i]}\n");
             }
             return sb.ToString();
         }
@@ -47,35 +47,16 @@ namespace Lab2._1_old_
         /// <summary>
         /// 
         /// </summary>
-        /// <returns>Список еды находящихся в корзине</returns>
-        public string ShowFood()
+        /// <returns>Список товаров магазина подходящих под фильр</returns>
+        public string ShowItems(Tag filter)
         {
-            StringBuilder sb = new StringBuilder("Ассортимент съедобных товаров:\n");
+            StringBuilder sb = new StringBuilder("Ассортимент товаров:\n");
 
-            for (int i = 0; i < Products.Count; i++)
+            for (int i = 0; i < Items.Count; i++)
             {
-                if (Products[i] is IFood)
+                if (Items[i].Tags.Contains(filter))
                 {
-                    sb.Append($"{i}: {Products[i]}\n");
-                }
-            }
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="filter">необходимый тип еды</param>
-        /// <returns>Список еды находящихся в корзине соответствующая фильтру</returns>
-        public string ShowFood(FoodType filter)
-        {
-            StringBuilder sb = new StringBuilder("Ассортимент съедобных товаров:\n");
-
-            for (int i = 0; i < Products.Count; i++)
-            {
-                if (Products[i] is IFood food && food.FoodType == filter)
-                {
-                    sb.Append($"{i}: {Products[i]}\n");
+                    sb.Append($"{i}: {Items[i]}\n");
                 }
             }
             return sb.ToString();

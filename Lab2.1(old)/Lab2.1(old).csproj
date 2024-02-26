@@ -46,22 +46,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BalykCheese.cs" />
+    <Compile Include="Items\BalykCheese.cs" />
     <Compile Include="Cart.cs" />
-    <Compile Include="Cheburek.cs" />
+    <Compile Include="Items\Cheburek.cs" />
     <Compile Include="EnergyValue.cs" />
-    <Compile Include="RawMeat.cs" />
-    <Compile Include="ChocolateBar.cs" />
-    <Compile Include="Crisps.cs" />
-    <Compile Include="DumplingsBerries.cs" />
-    <Compile Include="DumplingsMeat.cs" />
+    <Compile Include="Food.cs" />
+    <Compile Include="Items\RawMeat.cs" />
+    <Compile Include="Items\ChocolateBar.cs" />
+    <Compile Include="Items\Crisps.cs" />
+    <Compile Include="Items\DumplingsBerries.cs" />
+    <Compile Include="Items\DumplingsMeat.cs" />
     <Compile Include="Enums.cs" />
-    <Compile Include="Fruit.cs" />
-    <Compile Include="IFood.cs" />
-    <Compile Include="Notebook.cs" />
-    <Compile Include="OliveOil.cs" />
-    <Compile Include="Pen.cs" />
-    <Compile Include="Product.cs" />
+    <Compile Include="Items\Fruit.cs" />
+    <Compile Include="Items\Notebook.cs" />
+    <Compile Include="Items\OliveOil.cs" />
+    <Compile Include="Items\Pen.cs" />
+    <Compile Include="Item.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="U-Market.cs" />
@@ -70,5 +70,6 @@
     <None Include="App.config" />
     <None Include="AClassDiagram.cd" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

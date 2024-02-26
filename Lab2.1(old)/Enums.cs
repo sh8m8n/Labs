@@ -1,9 +1,16 @@
 ﻿namespace Lab2._1_old_
 {
-	public enum FoodType
+	public enum Tag
 	{
-		Snacks,
-		Healthy,
-		SemiFinished
-	}
+		Food,
+			Snacks,
+			Healthy,
+			SemiFinished,
+
+		Office,
+			Pen,
+
+		Electronics,
+			Notebook
+    }
 }

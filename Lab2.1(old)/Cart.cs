@@ -6,31 +6,31 @@ namespace Lab2._1_old_
 {
     internal class Cart
     {
-        private List<Product> Products;
-        private List<IFood> Foods;
+        private List<Item> Items;
+        private List<Food> Foods;
 
         public Cart()
         {
-            Products = new List<Product>();
-            Foods = new List<IFood>();
+            Items = new List<Item>();
+            Foods = new List<Food>();
         }
 
-        public void AddProduct(Product product)
+        public void AddItem(Item item)
         {
-            if (product is IFood food)
+            if (item is Food food)
             {
                 Foods.Add(food);
             }
             else
             {
-                Products.Add(product);
+                Items.Add(item);
             }
         }
 
-        public List<Product> GetProducts()
+        public List<Item> GetItems()
         {
-            List<Product> temp = new List<Product>(Products);
-            temp.AddRange(Foods.Cast<Product>());
+            List<Item> temp = new List<Item>(Items);
+            temp.AddRange(Foods.Cast<Item>());
 
             return temp;
         }
@@ -41,14 +41,14 @@ namespace Lab2._1_old_
         /// <param name="foods">Ассортимент доступных продуктов</param>
         /// <param name="accuracyPercentage">Допустимый процент отклонения наименьшего питательного элемента от наибольшего</param>
         /// <returns>Набор необходимой еды</returns>
-        public void BalanceFood(List<IFood> foods, int accuracyPercentage)
+        public void BalanceFood(List<Food> foods, int accuracyPercentage)
         {
             while(FindFoodDisbalance(accuracyPercentage) != null)
             {
                 EnergyValue disbalance = FindFoodDisbalance(accuracyPercentage);
-                IFood bestResult = foods[0];
+                Food bestResult = foods[0];
 
-                foreach (IFood food in foods)
+                foreach (Food food in foods)
                 {
                     if (EnergyValue.GetOffset(food.EnergyValue, disbalance) <
                         EnergyValue.GetOffset(bestResult.EnergyValue, disbalance))
@@ -60,6 +60,7 @@ namespace Lab2._1_old_
                 Foods.Add(bestResult);
             }
         }
+
         /// <summary>
         /// Поиск недостатка характеристик еды из корзины еды
         /// </summary>
@@ -68,7 +69,7 @@ namespace Lab2._1_old_
         private EnergyValue FindFoodDisbalance(int accuracyPercentage)
         {
             EnergyValue sumEnergy = new EnergyValue();
-            foreach (IFood food in Foods)
+            foreach (Food food in Foods)
             {
                 sumEnergy = sumEnergy + food.EnergyValue;
             }
@@ -86,19 +87,19 @@ namespace Lab2._1_old_
         public override string ToString()
         {
             EnergyValue sumEnergy = new EnergyValue();
-            foreach (IFood food in Foods)
+            foreach (Food food in Foods)
             {
                 sumEnergy = sumEnergy + food.EnergyValue;
             }
 
             StringBuilder sb = new StringBuilder($"Содержимое корзины:\nВсего: {sumEnergy}\n");
 
-            List<Product> temp = new List<Product>(Products);
-            temp.AddRange(Foods.Cast<Product>());
+            List<Item> temp = new List<Item>(Items);
+            temp.AddRange(Foods.Cast<Item>());
 
-            foreach (Product product in temp)
+            foreach (Item item in temp)
             { 
-                sb.Append($"{product}\n");
+                sb.Append($"{item}\n");
             }
 
             return sb.ToString();

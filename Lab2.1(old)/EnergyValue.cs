@@ -2,7 +2,7 @@
 
 namespace Lab2._1_old_
 {
-    internal class EnergyValue
+    public class EnergyValue
     {
         public int Proteins { get; }
         public int Fats { get; }
