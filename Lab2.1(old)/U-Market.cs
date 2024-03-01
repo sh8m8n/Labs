@@ -5,63 +5,47 @@ namespace Lab2._1_old_
 {
     internal class U_Market
     {
-        public List<Item> Items { get; set; }
+        private DataBase data;
         private Cart cart;
         private const int accuracyPercentage = 10;
 
-        public U_Market(List<Item> products)
+        public U_Market()
         {
-            Items = products;
+            data = new DataBase();
             cart = new Cart();
         }
 
         public void Buy(int index)
         {
-            cart.AddItem(Items[index]);
+            cart.AddItem(data.GetObject<Item>(index));
         }
 
         /// <summary>
         /// Добавляет в корзину продукты необходимые для сбалансированного набора
         /// </summary>
-        /// <param name="foods">Ассортимент доступных продуктов</param>
-        public void BalanceFoods(List<Food> foods)
+        public void BalanceFoods()
         {
-            cart.BalanceFood(foods, accuracyPercentage);
+            cart.BalanceFood(data.GetData<Food>(), accuracyPercentage);
         }
 
         /// <summary>
         /// 
         /// </summary>
-        /// <returns>Список товаров магазина</returns>
-        public string ShowItems()
+        /// <returns>Ассортимент товаров</returns>
+        public string GetAssortment()
         {
-            StringBuilder sb = new StringBuilder("Ассортимент товаров:\n");
-
-            for (int i = 0; i < Items.Count; i++)
-            {
-                    sb.Append($"{i}: {Items[i]}\n");
-            }
-            return sb.ToString();
+            return "Ассортимент:\n" + data.GetDataString<Item>();
         }
 
         /// <summary>
-        /// 
+        /// Возвращает ассортимент товаров подходящих под тег
         /// </summary>
-        /// <returns>Список товаров магазина подходящих под фильр</returns>
-        public string ShowItems(Tag filter)
+        /// <param name="tag">Тег необходимых товаров</param>
+        /// <returns>Ассортимент товаров</returns>
+        public string GetAssortment(Tag tag)
         {
-            StringBuilder sb = new StringBuilder("Ассортимент товаров:\n");
-
-            for (int i = 0; i < Items.Count; i++)
-            {
-                if (Items[i].Tags.Contains(filter))
-                {
-                    sb.Append($"{i}: {Items[i]}\n");
-                }
-            }
-            return sb.ToString();
+            return "Ассортимент:\n" + data.GetDataString<Food>(tag);
         }
-
         /// <summary>
         /// 
         /// </summary>
