@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Text;
-
-namespace Lab2._1_old_
+﻿namespace Lab2._1_old_
 {
     internal class U_Market
     {

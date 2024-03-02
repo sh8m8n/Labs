@@ -1,4 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using Lab2._1_old_.Items;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
 using System.Reflection;
 using System.Text;
 
@@ -20,7 +25,7 @@ namespace Lab2._1_old_
         {
             objects = new List<object>
             {
-                new Pen("Pilot", 100),
+                //new Pen("Pilot", 100),
                 new Notebook("Honor magicbook 14", 50000),
                 new ChocolateBar("RitterSport", 199, 10, 35, 50),
                 new Crisps("Lays дай краба", 99, 7, 30, 53),
@@ -36,6 +41,69 @@ namespace Lab2._1_old_
                 new RawMeat("свин", 232, 19, 7, 0),
                 new RawMeat("красная икра", 500, 25, 18, 4)
             };
+        }
+
+        public string Compare(List<object> list)
+        {
+            //Проверка на количество обьектов
+            if (objects.Count != list.Count)
+                return "Количество обьектов в списках не равно";
+
+            //Подготовительные действия для следующих проверок
+            Type[] oldTypes = new Type[objects.Count];
+            Type[] newTypes = new Type[objects.Count];
+
+            for (int i = 0; i < objects.Count; i++)
+            {
+                oldTypes[i] = objects[i].GetType();
+                newTypes[i] = list[i].GetType();
+            }
+
+            //Проверка на читаемость обьектов
+            for (int i = 0; i < newTypes.Length; i++)
+            {
+                if (newTypes[i].GetCustomAttribute<UnreadableAttribute>() != null)
+                    return $"Обнаружен нечитаемый тип: {newTypes[i].Name}\n" +
+                        $"Позиция: {i}";
+            }
+
+            //Попарное сравнение типов
+            for (int i = 0; i < oldTypes.Length; i++)
+            {
+                //Если тип несравниваемый или типы равны
+                if (oldTypes[i].GetCustomAttribute<NotComparableAttribute>() != null || (oldTypes[i] == newTypes[i]))
+                    continue;
+                else
+                    return $"Обнаружено расхождение в типах\n" +
+                        $"Позиция: {i}\n" +
+                        $"Получено: {newTypes[i].Name}\n" +
+                        $"Ожидалось: {oldTypes[i].Name}\n";
+            }
+
+            //Попарное сравнение значений полей и свойств
+            for (int i = 0; i < oldTypes.Length; i++)
+            {
+                FieldInfo[] oldfields =
+                    oldTypes[i].GetFields(BindingFlags.Instance | BindingFlags.NonPublic 
+                        | BindingFlags.Public | BindingFlags.Static);
+
+                FieldInfo[] newfields =
+                    newTypes[i].GetFields(BindingFlags.Instance | BindingFlags.NonPublic 
+                        | BindingFlags.Public | BindingFlags.Static);
+
+                for (int j = 0; j < oldfields.Length; j++)
+                {
+                    var oldValue = oldfields[j].GetValue(objects[i]);
+                    var newValue = newfields[j].GetValue(list[i]);
+
+                    if (oldValue is IEnumerable oldEn && newValue is IEnumerable newEn)
+                    {
+                        //
+                    }
+                }
+            }
+
+            return "Коллекции равны";
         }
 
         // Все что дальше не относится к 2 лабе
@@ -82,7 +150,7 @@ namespace Lab2._1_old_
 
             foreach (object obj in objects)
             {
-                if (obj is T t && t.Tags.Contains(filter))
+                if (obj is T t && t.ContainstTag(filter))
                     data.Add(t);
             }
 
@@ -98,10 +166,10 @@ namespace Lab2._1_old_
         {
             StringBuilder sb = new StringBuilder();
 
-            foreach (object obj in objects)
+            for (int i = 0; i < objects.Count; i++)
             {
-                if (obj is T)
-                    sb.Append($"{obj}\n");
+                if (objects[i] is T)
+                    sb.Append($"{i}:{objects[i]}\n");
             }
 
             return sb.ToString();
@@ -117,10 +185,10 @@ namespace Lab2._1_old_
         {
             StringBuilder sb = new StringBuilder();
 
-            foreach (object obj in objects)
+            for (int i = 0; i < objects.Count; i++)
             {
-                if (obj is T t && t.Tags.Contains(filter))
-                    sb.Append($"{t}\n");
+                if (objects[i] is T t && t.ContainstTag(filter))
+                    sb.Append($"{i}:{objects[i]}\n");
             }
 
             return sb.ToString();

@@ -7,13 +7,18 @@ namespace Lab2._1_old_
         public string Name { get; set; }
         public int Price { get; set; }
 
-        public List<Tag> Tags { get; protected set; }
+        protected List<Tag> Tags;
 
         public Item(string name, int price)
         {
             Name = name;
             Price = price;
             Tags = new List<Tag>();
+        }
+
+        public bool ContainstTag(Tag tag)
+        {
+            return Tags.Contains(tag);
         }
 
         public override string ToString()

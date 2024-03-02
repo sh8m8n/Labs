@@ -47,11 +47,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataBase.cs" />
+    <Compile Include="Items\Electronics.cs" />
     <Compile Include="Items\BalykCheese.cs" />
     <Compile Include="Cart.cs" />
     <Compile Include="Items\Cheburek.cs" />
     <Compile Include="EnergyValue.cs" />
     <Compile Include="Items\Food.cs" />
+    <Compile Include="Items\OfficeItem.cs" />
+    <Compile Include="UnreadableAttribute.cs" />
+    <Compile Include="NotComparableAttribute.cs" />
     <Compile Include="Items\RawMeat.cs" />
     <Compile Include="Items\ChocolateBar.cs" />
     <Compile Include="Items\Crisps.cs" />
@@ -69,7 +73,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="AClassDiagram.cd" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
