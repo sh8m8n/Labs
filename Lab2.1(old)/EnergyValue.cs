@@ -22,7 +22,6 @@ namespace Lab2._1_old_
             Carbohydrates = carbohydrates;
         }
 
-
         /// <summary>
         /// 
         /// </summary>
@@ -83,6 +82,17 @@ namespace Lab2._1_old_
         public override string ToString()
         {
             return $"Белки:{Proteins} Жиры: {Fats} Углеводы: {Carbohydrates}";
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is EnergyValue energyValue)
+            {
+                if(Proteins == energyValue.Proteins && Fats == energyValue.Fats 
+                    && Carbohydrates == energyValue.Carbohydrates)
+                    return true ;
+            }
+            return false;
         }
 
         public static EnergyValue operator +(EnergyValue val1, EnergyValue val2)

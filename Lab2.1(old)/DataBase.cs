@@ -1,9 +1,6 @@
-﻿using Lab2._1_old_.Items;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Data;
-using System.Linq;
 using System.Reflection;
 using System.Text;
 
@@ -41,6 +38,103 @@ namespace Lab2._1_old_
                 new RawMeat("свин", 232, 19, 7, 0),
                 new RawMeat("красная икра", 500, 25, 18, 4)
             };
+        }
+
+        public string HalturaCompare(List<object> list)
+        {
+            //Проверка на количество обьектов
+            if (objects.Count != list.Count)
+                return "Количество обьектов в списках не равно";
+
+            //Подготовительные действия для следующих проверок
+            Type[] oldTypes = new Type[objects.Count];
+            Type[] newTypes = new Type[objects.Count];
+
+            for (int i = 0; i < objects.Count; i++)
+            {
+                oldTypes[i] = objects[i].GetType();
+                newTypes[i] = list[i].GetType();
+            }
+
+            //Проверка на читаемость обьектов
+            for (int i = 0; i < newTypes.Length; i++)
+            {
+                if (newTypes[i].GetCustomAttribute<UnreadableAttribute>() != null)
+                    return $"Обнаружен нечитаемый тип: {newTypes[i].Name}\n" +
+                        $"Позиция: {i}\n";
+            }
+
+            //Попарное сравнение типов
+            for (int i = 0; i < oldTypes.Length; i++)
+            {
+                if (oldTypes[i] == newTypes[i])
+                    continue;
+                else
+                    return $"Обнаружено расхождение в типах\n" +
+                        $"Позиция: {i}\n" +
+                        $"Получено: {newTypes[i].Name}\n" +
+                        $"Ожидалось: {oldTypes[i].Name}\n";
+            }
+
+            //Попарное сравнение значений полей и свойств
+            for (int i = 0; i < oldTypes.Length; i++)
+            {
+                //Поля
+                FieldInfo[] oldFields =
+                    oldTypes[i].GetFields(BindingFlags.Instance | BindingFlags.NonPublic
+                        | BindingFlags.Public | BindingFlags.Static);
+
+                FieldInfo[] newFields =
+                    newTypes[i].GetFields(BindingFlags.Instance | BindingFlags.NonPublic
+                        | BindingFlags.Public | BindingFlags.Static);
+
+                for (int j = 0; j < oldFields.Length; j++)
+                {
+                    var oldFieldValue = oldFields[j].GetValue(objects[i]);
+                    var newFieldValue = newFields[j].GetValue(list[i]);
+
+                    if (oldFieldValue is IList && newFieldValue is IList
+                        || oldTypes[i].GetCustomAttribute<NotComparableAttribute>() != null)
+                        continue;
+
+                    if (!oldFieldValue.Equals(newFieldValue))
+                    {
+                        return $"Обнаружено расхождение в значениях\n" +
+                                        $"Позиция:{i}, Поле: {oldFields[j].Name}\n" +
+                                        $"Получено: {newFieldValue}\n" +
+                                        $"Ожидалось: {oldFieldValue}\n";
+                    }
+                }
+
+                //Cвойства
+                PropertyInfo[] oldProperties =
+                    oldTypes[i].GetProperties(BindingFlags.Instance | BindingFlags.NonPublic
+                        | BindingFlags.Public | BindingFlags.Static);
+
+                PropertyInfo[] newProperties =
+                    newTypes[i].GetProperties(BindingFlags.Instance | BindingFlags.NonPublic
+                        | BindingFlags.Public | BindingFlags.Static);
+
+                for (int j = 0; j < oldProperties.Length; j++)
+                {
+                    var oldPropertyValue = oldProperties[j].GetValue(objects[i]);
+                    var newPropertyValue = newProperties[j].GetValue(list[i]);
+
+                    if (oldPropertyValue is IList && newPropertyValue is IList
+                        || oldTypes[i].GetCustomAttribute<NotComparableAttribute>() != null)
+                        continue;
+
+                    if (!oldPropertyValue.Equals(newPropertyValue))
+                    {
+                        return $"Обнаружено расхождение в значениях\n" +
+                                        $"Позиция:{i}, Свойство: {oldProperties[j].Name}\n" +
+                                        $"Получено: {newPropertyValue}\n" +
+                                        $"Ожидалось: {oldPropertyValue}\n";
+                    }
+                }
+            }
+
+            return "Коллекции равны";
         }
 
         public string Compare(List<object> list)
@@ -93,13 +187,40 @@ namespace Lab2._1_old_
 
                 for (int j = 0; j < oldfields.Length; j++)
                 {
-                    var oldValue = oldfields[j].GetValue(objects[i]);
-                    var newValue = newfields[j].GetValue(list[i]);
+                    //Сравнение полей
+                    var oldFieldValue = oldfields[j].GetValue(objects[i]);
+                    var newFieldValue = newfields[j].GetValue(list[i]);
 
-                    if (oldValue is IEnumerable oldEn && newValue is IEnumerable newEn)
+                    if (oldFieldValue is IList oldList && newFieldValue is IList newList)
                     {
-                        //
+                        if (oldList.Count == newList.Count)
+                        {
+                            for (int k = 0; k < oldList.Count; k++)
+                            {
+                                if (oldList[k] != oldList[k])
+                                    return $"Найдено расхождение в значениях\n" +
+                                        $"Позиция:{i}, список: {oldfields[j].Name}\n" +
+                                        $"  Позция в списке: {k}\n" +
+                                        $"  Получено: {newList[k]}\n" +
+                                        $"  Ожидалось: {oldList[k]}\n";
+                            }
+                        }
+                        else
+                            return $"Найдено расхождение в значениях\n" +
+                                        $"Позиция:{i}, список: {oldfields[j].Name}\n" +
+                                        $"Длина получено списка: {newList.Count}\n" +
+                                        $"Длина ожидаемого списка: {oldList.Count}\n";
                     }
+                    else
+                    {
+                        if(oldFieldValue != newFieldValue)
+                            return $"Найдено расхождение в значениях\n" +
+                                        $"Позиция:{i}, Поле: {oldfields[j].Name}\n" +
+                                        $"Получено: {oldFieldValue}\n" +
+                                        $"Ожидалось: {newFieldValue}\n";
+                    }
+
+
                 }
             }
 

@@ -43,6 +43,7 @@
         {
             return "Ассортимент:\n" + data.GetDataString<Food>(tag);
         }
+
         /// <summary>
         /// 
         /// </summary>
