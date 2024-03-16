@@ -2,7 +2,7 @@
 {
     public class Cheburek : Food
     {
-        public Cheburek(string name, int price, int proteins, int fats, int carbohydrates) : 
+        public Cheburek(string name, int price, int proteins, int fats, int carbohydrates) :
             base(name, price, proteins, fats, carbohydrates)
         {
             Tags.Add(Tag.SemiFinished);

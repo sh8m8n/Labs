@@ -53,7 +53,7 @@
 
         public string SpendScholarship(int money, string itemOfExpenditure)
         {
-            if ( !Warning && Check - money > 0)
+            if (!Warning && Check - money > 0)
             {
                 Check -= money;
                 return $"Вы потратили {money} на {itemOfExpenditure}";

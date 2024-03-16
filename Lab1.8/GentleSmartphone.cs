@@ -13,7 +13,7 @@ namespace Lab8
             SerialNumber = ++countOfSmartphones;
             sensor = new TactileSensor(r);
         }
-        
+
         /// <summary>
         /// Возвращает чувствительность датчика нежности
         /// </summary>

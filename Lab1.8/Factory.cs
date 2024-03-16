@@ -7,7 +7,7 @@ namespace Lab8
     {
         public List<Customer> Customers { get; set; }
         private List<GentleSmartphone> smartphones;
-        
+
         public Factory()
         {
             Customers = new List<Customer>();
@@ -36,7 +36,7 @@ namespace Lab8
                 smartphones.Add(smartphone);
             }
         }
-        
+
         /// <summary>
         /// Продает смартфоны со склада покупателям, оставшиеся смартфоны ликвидируются
         /// </summary>
@@ -46,15 +46,15 @@ namespace Lab8
             {
                 foreach (var smartphone in smartphones)
                 {
-                    if ((smartphone.GetSensorSensetivity() / customer.GentleRate <= 1.5) && 
+                    if ((smartphone.GetSensorSensetivity() / customer.GentleRate <= 1.5) &&
                         (customer.GentleRate / smartphone.GetSensorSensetivity() <= 2))
                     {
                         customer.Smartphone = smartphone;
                         smartphones.Remove(smartphone);
                         break;
                     }
-                    else if(((smartphone.GetSensorSensetivity() / 2) / customer.GentleRate <= 1.5) &&
-                        (customer.GentleRate / (smartphone.GetSensorSensetivity()/2) <= 2))
+                    else if (((smartphone.GetSensorSensetivity() / 2) / customer.GentleRate <= 1.5) &&
+                        (customer.GentleRate / (smartphone.GetSensorSensetivity() / 2) <= 2))
                     {
                         customer.Smartphone = smartphone;
                         customer.TransformModule = new Transformator(TransformatorType.less);

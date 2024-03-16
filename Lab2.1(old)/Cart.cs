@@ -43,7 +43,7 @@ namespace Lab2._1_old_
         /// <returns>Набор необходимой еды</returns>
         public void BalanceFood(List<Food> foods, int accuracyPercentage)
         {
-            while(FindFoodDisbalance(accuracyPercentage) != null)
+            while (FindFoodDisbalance(accuracyPercentage) != null)
             {
                 EnergyValue disbalance = FindFoodDisbalance(accuracyPercentage);
                 Food bestResult = foods[0];
@@ -98,7 +98,7 @@ namespace Lab2._1_old_
             temp.AddRange(Foods.Cast<Item>());
 
             foreach (Item item in temp)
-            { 
+            {
                 sb.Append($"{item}\n");
             }
 

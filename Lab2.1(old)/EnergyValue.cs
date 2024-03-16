@@ -40,9 +40,9 @@ namespace Lab2._1_old_
         {
             int max = Fats;
 
-            if(Proteins > Fats)
+            if (Proteins > Fats)
                 max = Proteins;
-            if(Carbohydrates > max)
+            if (Carbohydrates > max)
                 max = Carbohydrates;
 
             return max;
@@ -88,9 +88,9 @@ namespace Lab2._1_old_
         {
             if (obj is EnergyValue energyValue)
             {
-                if(Proteins == energyValue.Proteins && Fats == energyValue.Fats 
+                if (Proteins == energyValue.Proteins && Fats == energyValue.Fats
                     && Carbohydrates == energyValue.Carbohydrates)
-                    return true ;
+                    return true;
             }
             return false;
         }

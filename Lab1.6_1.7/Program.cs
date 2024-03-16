@@ -25,8 +25,8 @@ namespace Lab6
             }
 
             //Инициализация производства
-            ElectricianDepartment electricianDepartment = new ElectricianDepartment() 
-            {Title = "Электрическое подразделение", NumberOfVacancies = 100 };
+            ElectricianDepartment electricianDepartment = new ElectricianDepartment()
+            { Title = "Электрическое подразделение", NumberOfVacancies = 100 };
 
             MechanicDepartment mechanicDepartment = new MechanicDepartment()
             { Title = "Механическое подразделение", NumberOfVacancies = 100 };
@@ -38,11 +38,11 @@ namespace Lab6
             { Candidates = people, Departments = new List<Department>() { electricianDepartment, mechanicDepartment, informDepartment } };
 
             //Отбор сотрудников
-            foreach (Department department in factory.Departments) 
+            foreach (Department department in factory.Departments)
             {
                 department.StaffSelection(factory.Candidates);
             }
-            
+
             //Вывод информации в консоль
             Console.WriteLine("Принятые сотрудники:");
             foreach (Department department in factory.Departments)

@@ -56,15 +56,15 @@ namespace Lab9
         {
             bool pass = true;
             string report = $"{discipline.Title}: ";
-            if(discipline is IHaveAngryTeacher)
+            if (discipline is IHaveAngryTeacher)
             {
                 report += "Автомат невозможен, учитель is злой";
                 return report;
             }
 
-            if(discipline is IHavePractice practiceDiscipline && PracticesCount.ContainsKey(practiceDiscipline))
+            if (discipline is IHavePractice practiceDiscipline && PracticesCount.ContainsKey(practiceDiscipline))
             {
-                if(practiceDiscipline.Check(PracticesCount[practiceDiscipline]))
+                if (practiceDiscipline.Check(PracticesCount[practiceDiscipline]))
                 {
                     report += "Практик достаточно";
                 }

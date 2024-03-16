@@ -2,7 +2,7 @@
 {
     public class ChocolateBar : Food
     {
-        public ChocolateBar(string name, int price, int proteins, int fats, int carbohydrates) : 
+        public ChocolateBar(string name, int price, int proteins, int fats, int carbohydrates) :
             base(name, price, proteins, fats, carbohydrates)
         {
             Tags.Add(Tag.Snacks);

@@ -33,7 +33,7 @@ namespace Lab2._1_old_
                         market.BalanceFoods();
                         Console.WriteLine(market.ShowCart());
                         break;
-                    case  -1:
+                    case -1:
                         Console.WriteLine(market.GetAssortment(Tag.Food));
                         Console.WriteLine(market.ShowCart());
                         break;

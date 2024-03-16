@@ -7,7 +7,7 @@ namespace Lab9
     {
         static public string[] names = {"Торин", "Глоин", "Оин", "Балин", "Двалин", "Бофур", "Бифур", "Кили", "Фили",
         "Дори", "Нори", "Ори", "Бомбур" };
-            
+
         static public List<Discipline> disciplines;
         static public List<Student> students;
 
@@ -34,14 +34,14 @@ namespace Lab9
             Random random = new Random();
             foreach (Student student in students)
             {
-                foreach(Discipline discipline in disciplines)
+                foreach (Discipline discipline in disciplines)
                 {
-                    if(discipline is IHavePractice practiceDiscipline)
+                    if (discipline is IHavePractice practiceDiscipline)
                     {
                         student.AddResult(practiceDiscipline, random.Next(0, 15));
                     }
 
-                    if(discipline is IHaveFinalControl controlDiscipline)
+                    if (discipline is IHaveFinalControl controlDiscipline)
                     {
                         student.AddResult(controlDiscipline, random.Next(20, 101));
                     }
@@ -49,7 +49,7 @@ namespace Lab9
             }
 
             //Вывод результатов в консоль
-            foreach(Student student in students)
+            foreach (Student student in students)
             {
                 Console.WriteLine($"\n\t{student.Name}:");
                 foreach (Discipline discipline in disciplines)

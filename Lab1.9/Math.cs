@@ -3,7 +3,7 @@
     internal class Math : Discipline, IHaveFinalControl
     {
         public int PassingScore { get; set; }
-        
+
         /// <summary>
         /// Проверка на достаточное количство тестовых баллов для автомата
         /// </summary>

@@ -178,11 +178,11 @@ namespace Lab2._1_old_
             for (int i = 0; i < oldTypes.Length; i++)
             {
                 FieldInfo[] oldfields =
-                    oldTypes[i].GetFields(BindingFlags.Instance | BindingFlags.NonPublic 
+                    oldTypes[i].GetFields(BindingFlags.Instance | BindingFlags.NonPublic
                         | BindingFlags.Public | BindingFlags.Static);
 
                 FieldInfo[] newfields =
-                    newTypes[i].GetFields(BindingFlags.Instance | BindingFlags.NonPublic 
+                    newTypes[i].GetFields(BindingFlags.Instance | BindingFlags.NonPublic
                         | BindingFlags.Public | BindingFlags.Static);
 
                 for (int j = 0; j < oldfields.Length; j++)
@@ -193,11 +193,15 @@ namespace Lab2._1_old_
 
                     if (oldFieldValue is IList oldList && newFieldValue is IList newList)
                     {
+                        if (oldFieldValue != oldFieldValue)
+                        {
+                            return "baka";
+                        }
                         if (oldList.Count == newList.Count)
                         {
                             for (int k = 0; k < oldList.Count; k++)
                             {
-                                if (oldList[k] != oldList[k])
+                                if ((int)oldList[k] != (int)oldList[k])
                                     return $"Найдено расхождение в значениях\n" +
                                         $"Позиция:{i}, список: {oldfields[j].Name}\n" +
                                         $"  Позция в списке: {k}\n" +
@@ -213,7 +217,7 @@ namespace Lab2._1_old_
                     }
                     else
                     {
-                        if(oldFieldValue != newFieldValue)
+                        if (oldFieldValue != newFieldValue)
                             return $"Найдено расхождение в значениях\n" +
                                         $"Позиция:{i}, Поле: {oldfields[j].Name}\n" +
                                         $"Получено: {oldFieldValue}\n" +
@@ -258,7 +262,7 @@ namespace Lab2._1_old_
 
             return data;
         }
-        
+
         /// <summary>
         /// Находит все предметы определенного типа подходящие под фильтр
         /// </summary>

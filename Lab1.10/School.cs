@@ -31,9 +31,9 @@ namespace Lab10
         /// "口丅口石卩闩丅乙 丫 冂仨卩乃口厂口, 口丅亼闩丅乙 乃丅口卩口爪丫"
         /// </summary>
         /// <param name="minMaxEmployee">人仨卄认乃仨凵, 丅卩丫亼牙厂闩</param>
-        public void Reward( ref (Student, Student) minMaxEmployee)
+        public void Reward(ref (Student, Student) minMaxEmployee)
         {
-            for(int i = 0;i < Students.Length;i++)
+            for (int i = 0; i < Students.Length; i++)
             {
                 if (Students[i] == minMaxEmployee.Item1)
                     Students[i].CountLunch--;

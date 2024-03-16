@@ -6,7 +6,7 @@ namespace Lab5__.NET_Core_
     {
         static void Main(string[] args)
         {
-            Student student = new Student() { ScholarshipAmount = 1000}; // :(
+            Student student = new Student() { ScholarshipAmount = 1000 }; // :(
 
             while (true)
             {
@@ -39,7 +39,7 @@ namespace Lab5__.NET_Core_
                     case ConsoleKey.D4:
                         Console.WriteLine($"Баланс = {student.Check}");
                         break;
-                    
+
                     case ConsoleKey.D5:
                         Console.WriteLine("Введите имя:");
                         student.Name = Console.ReadLine();
@@ -47,7 +47,7 @@ namespace Lab5__.NET_Core_
                         student.Speciality = Console.ReadLine();
                         break;
 
-                    default: 
+                    default:
                         Console.WriteLine("Такой команды нет");
                         break;
                 }

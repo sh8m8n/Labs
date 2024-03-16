@@ -16,6 +16,10 @@ namespace Lab2._1_old_
             Tags = new List<Tag>();
         }
 
+        public void AddTag(Tag tag)
+        {
+            Tags.Add(tag);
+        }
         public bool ContainstTag(Tag tag)
         {
             return Tags.Contains(tag);

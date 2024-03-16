@@ -1,5 +1,5 @@
-﻿using System;
-using StudentRegister;
+﻿using StudentRegister;
+using System;
 
 namespace SoftwareEngineering
 {
@@ -9,7 +9,7 @@ namespace SoftwareEngineering
 
         public string ProgrammingLanguage { get; set; }
 
-        public SEStudent(string fio, string programmingLanguage) 
+        public SEStudent(string fio, string programmingLanguage)
         {
             FIO = fio;
             ProgrammingLanguage = programmingLanguage;

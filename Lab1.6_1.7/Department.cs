@@ -12,7 +12,7 @@ namespace Lab6
         public int NumberOfVacancies
         {
             get { return numberOfVacancies; }
-            set 
+            set
             {
                 if (value > 0)
                 {
@@ -37,7 +37,7 @@ namespace Lab6
         {
             var Candidates1 = Candidates.OrderByDescending(x => x.Score).ToList();
 
-            foreach (Person person in Candidates1) 
+            foreach (Person person in Candidates1)
             {
                 if (NumberOfVacancies == 0)
                 {

@@ -3,7 +3,7 @@
     [NotComparable]
     public class RawMeat : Food
     {
-        public RawMeat(string name, int price, int proteins, int fats, int carbohydrates) : 
+        public RawMeat(string name, int price, int proteins, int fats, int carbohydrates) :
             base(name, price, proteins, fats, carbohydrates)
         {
             Tags.Add(Tag.Healthy);

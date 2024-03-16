@@ -39,7 +39,7 @@
         public double Score
         {
             get { return score; }
-            set 
+            set
             {
                 if (value > 0)
                 {
