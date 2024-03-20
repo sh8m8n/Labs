@@ -6,10 +6,16 @@ using System.Threading.Tasks;
 
 namespace Lab2_3
 {
-    public struct Address
+    public class Address : Coordinates
     {
-        public (double, double) Coordinates { get; set; }
         public string Street { get; set; }
         public int House { get; set; }
+
+        public Address(double XCoordinate, double YCoordinate, string street, int house) :
+            base(XCoordinate, YCoordinate)
+        {
+            Street = street;
+            House = house;
+        }
     }
 }

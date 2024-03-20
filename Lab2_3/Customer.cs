@@ -11,8 +11,12 @@ namespace Lab2_3
         public Order TempOrder { get; set; }
         public event OrderHandler IWantToTakeTaxi;
 
-        public void TakeATaxi()
+        public void TakeATaxi(double destinationX, double destinationY,string destinationStreet, int destinationHome,
+            double departureX, double departureY, departureStreet, 
+            bool childSeat)
         {
+            Order order = new Order(new Address(destinationX, destinationY,"shish", 25),
+                new Address(departureX, departureY,"jaja", 18), childSeat);
             IWantToTakeTaxi(this, new ArgsOfTaxiOrder(TempOrder));
         }
     }

@@ -46,6 +46,7 @@
     <Compile Include="Address.cs" />
     <Compile Include="ArgsOfTaxiOrder.cs" />
     <Compile Include="Car.cs" />
+    <Compile Include="Coordinates.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="Human.cs" />
     <Compile Include="Order.cs" />
