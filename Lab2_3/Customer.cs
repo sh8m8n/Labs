@@ -8,16 +8,23 @@ namespace Lab2_3
 {
     public class Customer : Human
     {
-        public Order TempOrder { get; set; }
-        public event OrderHandler IWantToTakeTaxi;
+        public event EventHandler<OrderArgs> TaxiCalled;
 
-        public void TakeATaxi(double destinationX, double destinationY,string destinationStreet, int destinationHome,
-            double departureX, double departureY, departureStreet, 
-            bool childSeat)
+        /// <summary>
+        /// Вызвать такси
+        /// </summary>
+        /// <param name="destinationStreet">откуда улица</param>
+        /// <param name="destinationHouse">откуда дом</param>
+        /// <param name="departureStreet">куда улица</param>
+        /// <param name="departureHouse">куда дом</param>
+        /// <param name="childSeat">необходимость детского сиденья</param>
+        public void TakeATaxi(string destinationStreet, int destinationHouse,
+            string departureStreet, int departureHouse, bool childSeat)
         {
-            Order order = new Order(new Address(destinationX, destinationY,"shish", 25),
-                new Address(departureX, departureY,"jaja", 18), childSeat);
-            IWantToTakeTaxi(this, new ArgsOfTaxiOrder(TempOrder));
+            Order order = new Order(new Address(destinationStreet, destinationHouse),
+                new Address(departureStreet, departureHouse), childSeat);
+
+            TaxiCalled?.Invoke(this, new OrderArgs(order));
         }
     }
 }

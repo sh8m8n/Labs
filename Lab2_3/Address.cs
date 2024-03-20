@@ -6,13 +6,12 @@ using System.Threading.Tasks;
 
 namespace Lab2_3
 {
-    public class Address : Coordinates
+    public class Address
     {
         public string Street { get; set; }
         public int House { get; set; }
 
-        public Address(double XCoordinate, double YCoordinate, string street, int house) :
-            base(XCoordinate, YCoordinate)
+        public Address(string street, int house)
         {
             Street = street;
             House = house;

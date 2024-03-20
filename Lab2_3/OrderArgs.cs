@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Lab2_3
 {
-    public class ArgsOfTaxiOrder
+    public class OrderArgs : EventArgs
     {
         public Order Order { get; set; }
-        public ArgsOfTaxiOrder(Order order)
+        public OrderArgs(Order order)
         {
             Order = order;
         }

@@ -17,7 +17,12 @@ namespace Lab2_3
             Y = y;
         }
         
-        public virtual double GetDistance(Coordinates coordinates)
+        /// <summary>
+        /// Вычисляет расстояние между координатами
+        /// </summary>
+        /// <param name="coordinates"></param>
+        /// <returns></returns>
+        public double GetDistance(Coordinates coordinates)
         {
             return Math.Sqrt(Math.Pow(X - coordinates.X, 2) + Math.Pow(Y - coordinates.Y, 2));
         }
