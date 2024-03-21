@@ -24,11 +24,26 @@ namespace Lab2_3
                 return;
             if(Car.ChildSeat == false && e.Order.ChildSeat == true) //Наличие детского кресла
                 return;
-            double distance = CurrentLocation.GetDistance(Map[e.Order.Destination]);
-            if (distance > AccessDistance) //Дистанция доступа
+
+            double distanceToDestination = CurrentLocation.GetDistance(Map[e.Order.Destination]);
+
+            //на самом деле тут должно быть расстояние которое проедет водитель вместе с пассажиром
+            double path = Map[e.Order.Destination].GetDistance(Map[e.Order.Departure]);
+
+            if (distanceToDestination > AccessDistance) //Дистанция доступа
                 return;
 
-            OrderResponded?.Invoke(this, new OrderSummaryArgs(e.Order, distance));
+            OrderResponded?.Invoke(this, new OrderSummaryArgs(e.Order, distanceToDestination, path));
+        }
+
+        public void RegisterAggregator(TaxiAggregator aggregator)
+        {
+            aggregator.OrderRecieved += OrderHandler;
+        }
+
+        public void UnregisterAggregator(TaxiAggregator aggregator)
+        {
+            aggregator.OrderRecieved -= OrderHandler;
         }
 
     }

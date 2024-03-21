@@ -8,11 +8,19 @@ namespace Lab2_3
 {
     public class OrderSummaryArgs : OrderArgs
     {
-        public double TraveledDistance { get; set; }
+        public double DistanceToDestination { get; set; }
+        public double Path { get; set; }
 
-        public OrderSummaryArgs(Order order, double traveledDistance) : base(order)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="order"></param>
+        /// <param name="distanceToDestination">Дистанция от текущего места водителя до старта маршрута</param>
+        /// <param name="path">Путь который водитель проедет с пассажиром</param>
+        public OrderSummaryArgs(Order order, double distanceToDestination, double path) : base(order)
         {
-            TraveledDistance = traveledDistance;
+            DistanceToDestination = distanceToDestination;
+            Path = path;
         }
     }
 }
