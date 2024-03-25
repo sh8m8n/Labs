@@ -5,13 +5,14 @@ namespace Lab2_3
 {
     public class TaxiDriver : Human
     {
-        private Coordinates CurrentLocation;
+        public static double AccessDistance { get; set; }
 
         public Car Car { get; set; }
         public Dictionary<string, Coordinates> Map { get; set; }
-        public static double AccessDistance { get; set; }
-        public double Rating { get; set; }
-        public bool isFree { get; set; }
+        public double Rating { get; private set; }
+        public bool isFree { get; private set; }
+
+        private Coordinates CurrentLocation;
 
         public event EventHandler<RespondedOrderArgs> OrderResponded;
 
@@ -23,7 +24,7 @@ namespace Lab2_3
             isFree = true;
         }
 
-        private void OrderHandler(object sender, OrderArgs e)
+        public void OrderHandler(object sender, OrderArgs e)
         {
             if(isFree == false) // Занятость
                 return;
@@ -41,18 +42,6 @@ namespace Lab2_3
             OrderResponded?.Invoke(this, new RespondedOrderArgs(e.Order, distanceToDestination, path));
         }
 
-        public void RegisterAggregator(TaxiAggregator aggregator)
-        {
-            Map = aggregator.Map;
-            aggregator.OrderRecieved += OrderHandler;
-        }
-
-        public void UnregisterAggregator(TaxiAggregator aggregator)
-        {
-            Map = null;
-            aggregator.OrderRecieved -= OrderHandler;
-        }
-
         /// <summary>
         /// Начисляет очки водителю
         /// </summary>
@@ -62,6 +51,5 @@ namespace Lab2_3
             if (ratingPoints > 0)
                 Rating += ratingPoints;
         }
-
     }
 }

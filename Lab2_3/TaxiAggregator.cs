@@ -56,21 +56,22 @@ namespace Lab2_3
 
         public void AddCustomer(Customer customer)
         {
-            customer.RegisterAggregator(this);
+            TaxiSent += customer.AnswerHandler;
             customer.TaxiCalled += OrderHandler;
             customers.Add(customer);
         }
         
         public void RemoveCustomer(Customer customer)
         {
-            customer.UnregisterAggregator(this);
+            TaxiSent -= customer.AnswerHandler;
             customer.TaxiCalled -= OrderHandler;
             customers.Remove(customer);
         }
 
         public void AddDriver(TaxiDriver driver)
         {
-            driver.RegisterAggregator(this);
+            driver.Map = Map;
+            OrderRecieved += driver.OrderHandler;
             driver.OrderResponded += RespondedDriverHandler;
 
             taxiDrivers.Add(driver);
@@ -78,7 +79,8 @@ namespace Lab2_3
 
         public void RemoveDriver(TaxiDriver driver)
         {
-            driver.UnregisterAggregator(this);
+            driver.Map = null;
+            OrderRecieved -= driver.OrderHandler;
             driver.OrderResponded -= RespondedDriverHandler;
 
             taxiDrivers.Remove(driver);
