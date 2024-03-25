@@ -51,6 +51,7 @@
     <Compile Include="Order.cs" />
     <Compile Include="OrderArgs.cs" />
     <Compile Include="OrderSummaryArgs.cs" />
+    <Compile Include="RespondedOrderArgs.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TaxiAggregator.cs" />

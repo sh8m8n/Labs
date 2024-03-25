@@ -1,26 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Lab2_3
+﻿namespace Lab2_3
 {
-    public class OrderSummaryArgs : OrderArgs
+    public class OrderSummaryArgs : RespondedOrderArgs
     {
-        public double DistanceToDestination { get; set; }
-        public double Path { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="order"></param>
-        /// <param name="distanceToDestination">Дистанция от текущего места водителя до старта маршрута</param>
-        /// <param name="path">Путь который водитель проедет с пассажиром</param>
-        public OrderSummaryArgs(Order order, double distanceToDestination, double path) : base(order)
+        public bool taxiSent { get; set; }
+        public string DriverName { get; set; }
+        public string CarBrand { get; set; }
+        public string CarNumber { get; set; }
+        public OrderSummaryArgs(RespondedOrderArgs args, TaxiDriver driver) : base(args.Order, args.DistanceToDestination, args.Path)
         {
-            DistanceToDestination = distanceToDestination;
-            Path = path;
+            taxiSent = true;
+            DriverName = driver.Name;
+            CarBrand = driver.Car.Brand;
+            CarNumber = driver.Car.Number;
+        }
+        /// <summary>
+        /// Используется для того чтобы указать что такси не приедет
+        /// </summary>
+        public OrderSummaryArgs() : base(null, -1, -1)
+        {
+            taxiSent = false;
         }
     }
 }
